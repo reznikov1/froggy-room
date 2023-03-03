@@ -3,7 +3,7 @@
 ## Links
 
 - [GitHub](https://github.com/reznikov1/froggy-room)
-- [Live](froggy-room.vercel.app)
+- [Live](https://froggy-room.vercel.app)
 
 ## Setup
 
