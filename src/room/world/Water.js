@@ -35,7 +35,6 @@ export default class BathWater {
         this.model.geometry.computeVertexNormals()
         this.material = new MeshReflectorMaterial(this.renderer, this.camera, this.scene, this.model, this.params);
         this.model.material = this.material;
-    
         this.scene.add(this.model);
     }
 

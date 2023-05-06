@@ -17,14 +17,7 @@ export default class Navigation {
     setView() {
         this.view = {}
 
-        this.view.spherical = {}
-        this.view.spherical.value = new THREE.Spherical(60, Math.PI * 0.35, Math.PI * 0.25)
-        this.view.spherical.smoothed = this.view.spherical.value.clone()
-        this.view.spherical.smoothing = 0.005
-        this.view.spherical.limits = {}
-        this.view.spherical.limits.radius = { min: 10, max: 50 }
-        this.view.spherical.limits.phi = { min: 0.01, max: Math.PI * 0.5 }
-        this.view.spherical.limits.theta = { min: 0.01, max: Math.PI * 0.5 }
+        this.view.spherical = this.createSpherical()
 
         this.view.target = {}
         this.view.target.value = new THREE.Vector3(0, 2, 0)
@@ -107,6 +100,30 @@ export default class Navigation {
 
         window.addEventListener('mousewheel', this.view.onWheel, { passive: false })
         window.addEventListener('wheel', this.view.onWheel, { passive: false })
+    }
+
+    createSpherical(){
+        let spherical = {}
+        spherical.value = new THREE.Spherical(60, Math.PI * 0.35, Math.PI * 0.25)
+        spherical.smoothed = this.view.spherical.value.clone()
+        spherical.smoothing = 0.005
+        spherical.limits = {}
+        spherical.limits.radius = { min: 10, max: 50 }
+        spherical.limits.phi = { min: 0.01, max: Math.PI * 0.5 }
+        spherical.limits.theta = { min: 0.01, max: Math.PI * 0.5 }
+        return spherical;
+    }
+
+    createTarget(){
+        let target = {}
+        target.value = new THREE.Vector3(0, 2, 0)
+        target.smoothed = this.view.target.value.clone()
+        target.smoothing = 0.005
+        target.limits = {}
+        target.limits.x = { min: -4, max: 4 }
+        target.limits.y = { min: 1, max: 4 }
+        target.limits.z = { min: -4, max: 4 }
+        return target;
     }
 
     update() {

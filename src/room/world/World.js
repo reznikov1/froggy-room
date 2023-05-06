@@ -19,18 +19,12 @@ export default class World {
             this.room = new Room()
             this.dust = new Dust()
             this.water = new BathWater()
-            // this.window = new Window()
             this.windowContent = new WindowContent()
             this.coffeeSteam = new CoffeeSteam()
             this.environment = new Environment()
             this.computerScreen = new ComputerScreen()
-
-
-
         })
     }
-
-
 
     update() {
         if (this.coffeeSteam) {

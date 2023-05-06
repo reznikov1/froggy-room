@@ -37,7 +37,6 @@ export default class ComputerScreen {
         })
      
     }
-   
 
     update() {
         this.model.material.uniforms.uTime.value = this.time.elapsed

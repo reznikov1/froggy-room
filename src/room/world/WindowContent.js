@@ -154,11 +154,7 @@ export default class WindowContent {
                 child.geometry.computeVertexNormals()
             }
         })
-
-
-
     }
-
 
     update() {
         this.customUniforms.color0.value.x = this.params.color0.r; 

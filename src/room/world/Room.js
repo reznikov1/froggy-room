@@ -15,8 +15,6 @@ export default class Room {
         this.resources = this.experience.resources
         this.time = this.experience.time
 
-
-
         this.wallsTexture = this.resources.items.wallsTexture
         this.wallsTexture.encoding = THREE.sRGBEncoding;
         this.wallsTexture.flipY = false;

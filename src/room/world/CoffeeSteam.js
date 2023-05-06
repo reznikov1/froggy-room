@@ -14,20 +14,11 @@ export default class CoffeeSteam {
 
         this.model = this.resources.items.steam.scene.children[1]
 
-        // if (this.debug) {
-        //     this.debugFolder = this.debug.addFolder({
-        //         title: 'coffeeSteam',
-        //         expanded: false
-        //     })
-        // }
-
         this.setModel()
     }
 
     setModel() {
         this.scene.add(this.model)
-  
-
 
         this.model.material = new THREE.ShaderMaterial({
             transparent: true,
@@ -39,27 +30,7 @@ export default class CoffeeSteam {
                 uUvFrequency: { value: new THREE.Vector2(6, 2.5) }
             }
         })
-        if (this.debug) {
-            // this.debugFolder.addInput(
-            //     this.model.material.uniforms.uUvFrequency.value,
-            //     'x',
-            //     {
-            //         min: 0.001,
-            //         max: 20,
-            //         step: 0.001,
-            //     }
-            // )
 
-            // this.debugFolder.addInput(
-            //     this.model.material.uniforms.uUvFrequency.value,
-            //     'y',
-            //     {
-            //         min: 0.001,
-            //         max: 20,
-            //         step: 0.001,
-            //     }
-            // )
-        }
     }
 
     update() {

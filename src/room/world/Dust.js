@@ -9,16 +9,7 @@ export default class Dust {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.renderer = this.experience.renderer.instance
-        this.debug = this.experience.debug
         this.time = this.experience.time
-
-
-        // if (this.debug) {
-        //     this.debugFolder = this.debug.addFolder({
-        //         title: 'dust',
-        //         expanded: true
-        //     })
-        // }
 
         this.geo = null;
         this.material = null;
@@ -32,19 +23,6 @@ export default class Dust {
         this.params.zsize = 5.489;
         this.params.zoffset = -1.570;
 
-        if (this.debug) {
-            // this.debugFolder.addInput(
-            //     this.params,
-            //     'count',
-            //     {
-            //         min: 100,
-            //         max: 2000,
-            //         step: 100,
-            //         onFinishChange: this.generateCompany
-            //     },
-            // ).on('change',this.generateCompany.bind(this))
-
-        }
 
         this.generateCompany()
     }
@@ -65,9 +43,9 @@ export default class Dust {
         for (let i = 0; i < this.params.count; i++) {
             const i3 = i * 3;
 
-            const x = Math.random() * this.params.xsize ;
-            const y = (Math.random() * this.params.ysize) - 0.3*x;
-            const z = -(Math.random() * this.params.zsize ) * Math.abs((x - this.params.xoffset))*0.1;
+            const x = Math.random() * this.params.xsize;
+            const y = (Math.random() * this.params.ysize) - 0.3 * x;
+            const z = -(Math.random() * this.params.zsize) * Math.abs((x - this.params.xoffset)) * 0.1;
 
             positions[i3] = x + this.params.xoffset
             positions[i3 + 1] = y + this.params.yoffset
@@ -79,7 +57,6 @@ export default class Dust {
         this.geo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
         this.geo.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
-
         this.material = new THREE.ShaderMaterial({
             depthWrite: false,
             blending: THREE.AdditiveBlending,
@@ -88,18 +65,15 @@ export default class Dust {
             fragmentShader: fragmentShader,
             uniforms: {
                 uTime: { value: 0 },
-                uSize: {value: 60 * this.renderer.getPixelRatio()},
+                uSize: { value: 60 * this.renderer.getPixelRatio() },
             },
         })
-
-
         this.points = new THREE.Points(this.geo, this.material)
         this.scene.add(this.points);
 
     }
 
     update() {
-
         this.material.uniforms.uTime.value = this.time.elapsed
     }
 }
